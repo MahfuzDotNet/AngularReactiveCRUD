@@ -1,0 +1,129 @@
+<div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+  
+    <div class="card-body">
+      <form novalidate
+            (ngSubmit)="saveUser()"
+            [formGroup]="userForm">
+  
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label"
+                 for="userNameId">User Name</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="userNameId"
+                   type="text"
+                   placeholder="Name (required)"
+                   formControlName="name"
+                   [ngClass]="{'is-invalid': displayMessage.name }" />
+            <span class="invalid-feedback">
+              {{displayMessage.name}}
+            </span>
+          </div>
+        </div>
+  
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label"
+                 for="userDescriptionId">Description</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="userDescriptionId"
+                   type="text"
+                   placeholder="Description"
+                   formControlName="description"  
+                   [ngClass]="{'is-invalid': displayMessage.description }" />
+       
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label"
+                   for="userEmailId">Email</label>
+            <div class="col-md-8">
+              <input class="form-control"
+                     id="userEmailId"
+                     type="text"
+                     placeholder="Email (required)"
+                     formControlName="email"   [ngClass]="{'is-invalid': displayMessage.email }" />
+                     <span class="invalid-feedback">
+                       {{displayMessage.email}}
+                     </span> 
+         
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label"
+                   for="userAddressId">Address</label>
+            <div class="col-md-8">
+              <input class="form-control"
+                     id="userAddressId"
+                     type="text"
+                     placeholder="Address"
+                     formControlName="address"  />
+         
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label"
+                   for="userMobileId">Mobile</label>
+            <div class="col-md-8">
+              <input class="form-control"
+                     id="userMobileId"
+                     type="text"
+                     placeholder="Mobile (required)"
+                     formControlName="mobile"   [ngClass]="{'is-invalid': displayMessage.mobile }" />
+                     <span class="invalid-feedback">
+                       {{displayMessage.mobile}}
+                     </span> 
+         
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label"
+                   for="userPostCodeId">Address</label>
+            <div class="col-md-8">
+              <input class="form-control"
+                     id="userPostCodeId"
+                     type="text"
+                     placeholder="PostCode"
+                     formControlName="postCode"  />
+         
+            </div>
+          </div>
+  
+        <div class="form-group row mb-2">
+          <div class="offset-md-2 col-md-4">
+            <button class="btn btn-primary mr-3"
+                    style="width:80px;"
+                    type="submit"
+                    [title]="userForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                    [disabled]="!userForm.valid">
+              Save
+            </button>
+            <span class="space"></span>
+            <button class="btn btn-outline-secondary mr-3"
+                    style="width:80px;"
+                    type="button"
+                    title="Cancel your edits"
+                    [routerLink]="['/users']">
+              Cancel
+            </button>
+            <span class="space"></span>
+            <button class="btn btn-outline-warning"
+                    style="width:80px"
+                    type="button"
+                    title="Delete this user"
+                    (click)="deleteUser()">
+              Delete
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  
+    <div class="alert alert-danger"
+         *ngIf="errorMessage">{{errorMessage}}
+    </div>
+  </div>
